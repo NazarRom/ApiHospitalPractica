@@ -1,5 +1,6 @@
 ﻿using ApiHospitalPractica.Models;
 using ApiHospitalPractica.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace ApiHospitalPractica.Controllers
             this.repo = repo;
         }
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<Hospital>>> GetHospitales()
         {
             return await this.repo.GetHospitalesAsync();

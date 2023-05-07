@@ -59,6 +59,12 @@ namespace ApiHospitalPractica.Repositories
             this.context.Hospitales.Remove(hospital);
             await this.context.SaveChangesAsync();
         }
-       
+
+
+        public async Task<Hospital> ExisteHospitalAsync(string nombre, int hospcod)
+        {
+            return await this.context.Hospitales.FirstOrDefaultAsync(x => x.Nombre == nombre && x.Hospital_cod == hospcod);
+        }
+
     }
 }
