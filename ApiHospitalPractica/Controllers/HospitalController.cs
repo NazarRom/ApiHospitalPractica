@@ -3,6 +3,8 @@ using ApiHospitalPractica.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace ApiHospitalPractica.Controllers
 {
@@ -15,6 +17,23 @@ namespace ApiHospitalPractica.Controllers
         {
             this.repo = repo;
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<ActionResult<Hospital>> PerfilHospital()
+        {
+            //DEBEMOS BUSCAR EL CLAIM DEL EMPLEADO
+            Claim claim = HttpContext.User.Claims
+                .SingleOrDefault(x => x.Type == "UserData");
+            string jsonHospital =
+                claim.Value;
+            Hospital Hospital = JsonConvert.DeserializeObject<Hospital>
+                (jsonHospital);
+            return Hospital;
+        }
+
+
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<List<Hospital>>> GetHospitales()
