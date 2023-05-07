@@ -15,7 +15,9 @@ namespace ApiHospitalPractica.Models
         public string Direccion { get; set; }
         [Column("Telefono")]
         public string Telelfono { get; set; }
-        [Column("Num_cama")]
+        [Column("NUM_CAMA")]
         public int Num_cama { get; set; }
+        [Column("IMAGEN")]
+        public string Imagen { get; set; }
     }
 }

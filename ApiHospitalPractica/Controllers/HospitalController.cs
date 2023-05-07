@@ -49,14 +49,14 @@ namespace ApiHospitalPractica.Controllers
         [HttpPost]
         public async Task<ActionResult> InsertHospital(Hospital hospital)
         {
-            await this.repo.InsertHospitalAsync(hospital.Hospital_cod, hospital.Nombre, hospital.Direccion, hospital.Telelfono, hospital.Num_cama);
+            await this.repo.InsertHospitalAsync(hospital.Hospital_cod, hospital.Nombre, hospital.Direccion, hospital.Telelfono, hospital.Num_cama, hospital.Imagen);
             return Ok();
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateHospital(Hospital hospital)
         {
-            await this.repo.UpdateHospital(hospital.Hospital_cod, hospital.Nombre, hospital.Direccion, hospital.Telelfono, hospital.Num_cama);
+            await this.repo.UpdateHospital(hospital.Hospital_cod, hospital.Nombre, hospital.Direccion, hospital.Telelfono, hospital.Num_cama, hospital.Imagen);
             return Ok();
         }
 
